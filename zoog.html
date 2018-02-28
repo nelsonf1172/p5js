@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>p5js Template</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.3/p5.js"></script>
+
+    <script>
+        function setup() {
+            createCanvas(1920, 1080);
+            background(111, 233, 239)
+
+            //antena
+            fill(225)
+            rectMode(CENTER)
+            rect(1000, 140, 20, 100)
+            ellipse(1000, 200, 100, 100) //bottom circle
+            ellipse(1000, 80, 40, 40) //top circle
+
+            //head
+            fill(206)
+            stroke(206)
+            rectMode(CORNER)
+            rect(800, 400, 400, 400) //head
+            stroke(1)
+            line(800, 400, 800, 800)
+            line(800, 800, 1200, 800)
+            line(1200, 400, 1200, 800)
+            arc(1000, 400, 400, 400, PI, 0)
+
+            //eyes
+            fill(225)
+            stroke(1)
+            ellipse(800, 490, 60, 180) //outer eye display
+            ellipse(1200, 490, 60, 180)
+            stroke(225)
+            rect(800, 400, 400, 180)
+            stroke(1)
+            line(800, 400, 1200, 400)
+            line(800, 580, 1200, 580)
+            fill(1)
+            rect(830, 430, 340, 120) //inner eye display
+            ellipse(830, 490, 40, 120)
+            ellipse(1170, 490, 40, 120)
+
+            fill(255, 254, 208)
+            ellipse(900, 490, 120, ) //left eye
+            ellipse(1100, 490, 120, ) //right eye
+
+            strokeWeight(20)
+            point(890, 490) //left pupil
+            point(1090, 490) //right pupil
+
+            //mouth
+            strokeWeight(1)
+            stroke(1)
+            ellipse(900, 700, 120) //frame
+            ellipse(1100, 700, 120)
+            noStroke()
+            rect(900, 640, 200, 120)
+            stroke(1)
+            line(900, 640, 1100, 640) //teeth lines
+            line(900, 760, 1100, 760)
+            line(845, 680, 1155, 680)
+            line(845, 720, 1155, 720)
+            line(900, 640, 900, 760)
+            line(940, 640, 940, 760)
+            line(980, 640, 980, 760)
+            line(1020, 640, 1020, 760)
+            line(1060, 640, 1060, 760)
+            line(1100, 640, 1100, 760)
+
+            //body
+            fill(206)
+            quad(800, 800, 1200, 800, 1300, 900, 700, 900)
+            rect(700, 900, 600, 180)
+            rect(780, 940, 440, 180) //chest door
+
+            //text
+            fill(1)
+            textAlign(CENTER)
+            textSize(100)
+            text('Bender', 1000, 1060)
+
+
+
+
+
+
+
+        }
+
+        function draw() {
+
+        }
+    </script>
+</head>
+
+<body>
+    <div id="code" class="container-fluid">
+        <script src="https://gist-it.appspot.com/github/nelsonf1172/p5js/blob/master/zoog.html?footer=0"></script>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(window).bind("load", function() {
+            $('#code').before($('#defaultCanvas0').remove());
+        });
+    </script>
+</body>
+
+
+</html>
