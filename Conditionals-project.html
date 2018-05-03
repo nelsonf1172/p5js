@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+  <title>p5js Template</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.3/p5.js"></script>
+
+  <script>
+    var roadline1
+    var roadline2
+    var roadline3
+    var start = false
+    var carX = 250
+    var carY = 400
+    var roadL
+    var roadR
+    var rbx1 = 100
+    var rby1 = 0
+    var rbx2 = 300
+    var rby2 = -250
+
+    function setup() {
+      createCanvas(500, 500);
+      roadline1 = height / 2
+      roadline2 = height / 2 - 200
+      roadline3 = height / 2 + 200
+
+      roadL = width / 6
+      roadR = 5 * width / 6
+
+      frameRate(60)
+
+
+    }
+
+    function draw() {
+      background(150, 255, 50)
+
+
+
+      //road
+      fill(200)
+      noStroke()
+      rectMode(CORNERS)
+      rect(roadL, 0, roadR, height)
+      //road lines
+      fill(255, 255, 0)
+      rectMode(CENTER)
+      rect(width / 2, roadline1, 50, 100) //line 1
+      rect(width / 2, roadline2, 50, 100) //line 2
+      rect(width / 2, roadline3, 50, 100) //line 3
+      //if roadlines hit the bottom they go back top
+      if (roadline1 - 50 > height) {
+        roadline1 = -50
+      }
+      else if (roadline2 - 50 > height) {
+        roadline2 = -50
+      }
+      else if (roadline3 - 50 > height) {
+        roadline3 = -50
+      }
+
+
+
+      //roadblock
+      stroke(0)
+      strokeWeight(3)
+      fill(200, 100, 100)
+      rectMode(CORNER)
+      rect(rbx1, rby1, 80, 30) //rb1
+      rect(rbx2, rby2, 80, 30) //rb2
+      //if roadblocks hit the bottom they go back to the top in a different position
+      if (rby1 > height) {
+        rby1 = 0
+        rbx1 = random(roadL, roadR - 80)
+      }
+      else if (rby2 > height) {
+        rby2 = 0
+        rbx2 = random(roadL, roadR - 80)
+      }
+
+
+
+      //press any key to start game
+      if (start == true) {
+        roadline1 += 3
+        roadline2 += 3
+        roadline3 += 3
+
+        rby1 += 3
+        rby2 += 3
+      }
+      else {
+        roadline1 = height / 2
+        roadline2 = height / 2 - 200
+        roadline3 = height / 2 + 200
+      }
+
+
+      //car
+      rectMode(CENTER)
+      fill(0)
+      rect(carX - 50, carY - 50, 30, 50, 5) //FL wheel
+      rect(carX + 50, carY - 50, 30, 50, 5) //FR wheel
+      rect(carX - 50, carY + 40, 30, 50, 5) //FL wheel
+      rect(carX + 50, carY + 40, 30, 50, 5) //FL wheel
+
+      stroke(0)
+      strokeWeight(3)
+      fill(0, 0, 255)
+      rect(carX, carY - 75, 100, 80, 10)
+      rect(carX, carY, 100, 150, 20)
+
+      carX = constrain(carX, roadL + 65, roadR - 65)//limit car to inside the road
+
+
+
+      //controls
+      if (keyIsDown(UP_ARROW) || keyIsDown(87)) {//forward
+        carY -= 3
+      }
+      if (keyIsDown(DOWN_ARROW) || keyIsDown(83)) {//backward
+        carY += 3
+      }
+      if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) {//move left
+        carX -= 6
+      }
+      if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {//move right
+        carX += 6
+      }
+
+
+
+      //GAME OVER MESSAGE
+      if ((carY - 125 < rby1 + 15 && carY - 125 > rby1 && carX - 50 < rbx1 + 80 && carX + 50 > rbx1) || (carY - 125 < rby2 + 15 && carY - 125 > rby2 && carX - 50 < rbx2 + 80 && carX + 50 > rbx2)) {
+        fill(234, 54, 54)
+        rectMode(CORNER)
+        rect(0, 0, width, height) //red background
+        fill(255)
+        textAlign(CENTER)
+        textSize(36)
+        text('GAME OVER', width / 2, height / 2)//text
+        noLoop()
+        start = false
+      }
+    }
+
+    function keyPressed() {
+      start = true
+    }
+  </script>
+</head>
+
+<body>
+    <div id="code" class="container-fluid">
+        <script src="https://gist-it.appspot.com/github/nelsonf1172/p5js/blob/master/Conditionals-project.html?footer=0"></script>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(window).bind("load", function() {
+            $('#code').before($('#defaultCanvas0').remove());
+        });
+    </script>
+</body>
+
+
+</html>
