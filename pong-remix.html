@@ -52,7 +52,7 @@
             // left paddle
             if (ballX < 0 + paddleHeight) { // ball is past 'goal line' horizontally
                 if (ballY > mouseY - 100 && ballY < mouseY + 100) { // ball is within paddle horizontally
-                    ballSpeedX = ballSpeedX * -1; // switch X direction
+                    ballSpeedX = (ballSpeedX - 1) * -1; // switch X direction
                 }
                 else { // ball is on the left or right side of the paddle
                     text("GAME OVER!", width / 2, height / 2);
@@ -63,7 +63,7 @@
             //right paddle
             if (ballX > width - paddleHeight) { // ball is past 'goal line' horizontally
                 if (ballY > mouseY - 100 && ballY < mouseY + 100) { // ball is within paddle horizontally
-                    ballSpeedX = ballSpeedX * -1; // switch X direction
+                    ballSpeedX = (ballSpeedX + 1) * -1; // switch X direction
                 }
                 else { // ball is on the left or right side of the paddle
                     text("GAME OVER!", width / 2, height / 2);
@@ -74,7 +74,7 @@
             // top paddle
             if (ballY < 0 + paddleHeight) { // ball is past 'goal line' vertically
                 if (ballX > mouseX - 100 && ballX < mouseX + 100) { // ball is within paddle horizontally
-                    ballSpeedY = ballSpeedY * -1; // switch Y direction
+                    ballSpeedY = (ballSpeedY - 1) * -1; // switch Y direction
                 }
                 else { // ball is on the left or right side of the paddle
                     text("GAME OVER!", width / 2, height / 2);
@@ -85,7 +85,7 @@
             // bottom paddle
             if (ballY > height - paddleHeight) { // ball is past 'goal line' vertically
                 if (ballX > mouseX - 100 && ballX < mouseX + 100) { // ball is within paddle horizontally
-                    ballSpeedY = ballSpeedY * -1; // switch Y direction
+                    ballSpeedY = (ballSpeedY + 1) * -1; // switch Y direction
                 }
                 else { // ball is on the left or right side of the paddle
                     text("GAME OVER!", width / 2, height / 2);
